@@ -1,10 +1,7 @@
+import Channel4MeLanding from "./Channel4MeLanding";
+
 function App() {
-  return (
-    <div>
-      <h1>Channel4Me</h1>
-      <p>Your smart media platform</p>
-    </div>
-  );
+  return <Channel4MeLanding />;
 }
 
 export default App;
