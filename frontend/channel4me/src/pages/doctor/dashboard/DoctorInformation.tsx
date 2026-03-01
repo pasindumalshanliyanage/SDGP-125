@@ -5,7 +5,7 @@ function DoctorInformation() {
   const navigate = useNavigate();
 
   const handleNavigateToPatients = () => {
-    navigate('/patients');
+    navigate('/doctor/dashboard/patients');
   };
 
   const handleNavigateToAppointments = () => {
