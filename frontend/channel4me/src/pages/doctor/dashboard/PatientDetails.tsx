@@ -57,7 +57,6 @@ function SectionCard({ iconBg, icon, title, sub, children }) {
   );
 }
 
-
 // ── Main Component ──────────────────────────────────────────
 export default function PatientDetails() {
   const navigate = useNavigate();
