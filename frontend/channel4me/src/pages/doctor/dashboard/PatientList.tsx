@@ -136,7 +136,7 @@ export default function PatientList() {
 
   // navigation handler passed down to cards; accepts patient id
   const handleNavigateToPatientsDetails = (id) => {
-    navigate('/doctor/dashboard/patients/id');
+    navigate(`/doctor/dashboard/patients/${id}`);
   };
 
   return (
