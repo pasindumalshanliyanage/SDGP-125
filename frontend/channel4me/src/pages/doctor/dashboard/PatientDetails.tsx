@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../../styles/doctor/dashboard/PatientDetails.css';
 
