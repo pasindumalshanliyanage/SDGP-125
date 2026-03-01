@@ -8,6 +8,7 @@ import DoctorLogin from './pages/RegistrationType';
 import HomePage from './pages/homepage';
 import RegistrationType from './pages/RegistrationType'; 
 import DoctorInformation from './pages/doctor/dashboard/DoctorInformation';
+import Appointment from './pages/doctor/dashboard/Appointment';
 
 function App() {
     return (
@@ -25,7 +26,9 @@ function App() {
                     <Route path="/doctor/register/step2" element={<DoctorRegisterStep2 />} />
                     <Route path="/doctor/register/step3" element={<DoctorRegisterStep3 />} />
 
+                    {/* Doctor Dashboard Flow */}
                     <Route path="/doctor/dashboard" element={<DoctorInformation />} />
+                    <Route path="/doctor/dashboard/appointments" element={<Appointment />} />
                     
                     {/* Doctor Login */}
                     <Route path="/doctor/login" element={<DoctorLogin />} />
