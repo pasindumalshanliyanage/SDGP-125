@@ -10,6 +10,7 @@ import RegistrationType from './pages/RegistrationType';
 import DoctorInformation from './pages/doctor/dashboard/DoctorInformation';
 import Appointment from './pages/doctor/dashboard/Appointment';
 import PatientList from './pages/doctor/dashboard/PatientList';
+import PatientDetails from './pages/doctor/dashboard/PatientDetails';
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/doctor/dashboard" element={<DoctorInformation />} />
                     <Route path="/doctor/dashboard/appointments" element={<Appointment />} />
                     <Route path="/doctor/dashboard/patients" element={<PatientList />} />
+                    <Route path="/doctor/dashboard/patients/id" element={<PatientDetails />} />
                     
                     {/* Redirect to home for unknown routes */}
                     <Route path="*" element={<Navigate to="/" replace />} />
