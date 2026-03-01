@@ -7,6 +7,7 @@ import DoctorRegisterStep3 from './pages/doctor/register/DoctorRegisterStep3';
 import DoctorLogin from './pages/RegistrationType';
 import HomePage from './pages/homepage';
 import RegistrationType from './pages/RegistrationType'; 
+import DoctorInformation from './pages/doctor/dashboard/DoctorInformation';
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
                     <Route path="/doctor/register/step1" element={<DoctorRegisterStep1 />} />
                     <Route path="/doctor/register/step2" element={<DoctorRegisterStep2 />} />
                     <Route path="/doctor/register/step3" element={<DoctorRegisterStep3 />} />
+
+                    <Route path="/doctor/dashboard" element={<DoctorInformation />} />
                     
                     {/* Doctor Login */}
                     <Route path="/doctor/login" element={<DoctorLogin />} />
