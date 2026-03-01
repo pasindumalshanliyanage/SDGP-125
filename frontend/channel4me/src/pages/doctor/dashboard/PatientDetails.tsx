@@ -132,6 +132,26 @@ const PATIENTS: Patient[] = [
     { name: 'Blood Sugar Level', value: '85 mg/dL',   dot: 'green',  icon: '🩸' },
   ],
   feedback: []
+},
+{
+  id: 5,
+  initials: '--',
+  name: 'Unknown',
+  age: '-',
+  gender: 'Male',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
+  bloodType: '-',
+  emergency: {
+    guardian: 'Thisara Perera',
+    contact1: '0766 579 841',
+    contact2: '0785 238 219',
+  },
+  healthConditions: [
+    { name: 'Blood Sugar Level', value: '85 mg/dL',   dot: 'green',  icon: '🩸' },
+  ],
+  feedback: []
 }
  
 ];
