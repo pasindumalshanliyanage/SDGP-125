@@ -9,6 +9,7 @@ import HomePage from './pages/homepage';
 import RegistrationType from './pages/RegistrationType'; 
 import DoctorInformation from './pages/doctor/dashboard/DoctorInformation';
 import Appointment from './pages/doctor/dashboard/Appointment';
+import PatientList from './pages/doctor/dashboard/PatientList';
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     {/* Doctor Dashboard Flow */}
                     <Route path="/doctor/dashboard" element={<DoctorInformation />} />
                     <Route path="/doctor/dashboard/appointments" element={<Appointment />} />
+                    <Route path="/doctor/dashboard/patients" element={<PatientList />} />
                     
                     {/* Doctor Login */}
                     <Route path="/doctor/login" element={<DoctorLogin />} />
