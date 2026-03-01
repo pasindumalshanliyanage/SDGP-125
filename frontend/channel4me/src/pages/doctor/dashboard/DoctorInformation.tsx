@@ -9,7 +9,7 @@ function DoctorInformation() {
   };
 
   const handleNavigateToAppointments = () => {
-    navigate('/appointments');
+    navigate('/doctor/dashboard/appointments');
   };
 
   return (
