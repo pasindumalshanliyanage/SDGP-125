@@ -1,17 +1,51 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../../styles/doctor/dashboard/PatientDetails.css';
 
-// ── Sample patient data ─────────────────────────────────────
-// In your real app, receive `patient` as a prop or fetch by ID from router params
-const PATIENT = {
+interface HealthCondition {
+  dot: string;
+  icon: string;
+  name: string;
+  value: string;
+}
+
+interface EmergencyContact {
+  guardian: string;
+  contact1: string;
+  contact2: string;
+}
+
+interface Feedback {
+  id: number;
+  color: string;
+  text: string;
+  time: string;
+}
+
+interface Patient {
+  id: number;
+  initials: string;
+  name: string;
+  age: string | number;
+  gender: string;
+  address: string;
+  hospital: string;
+  nextAppt: string;
+  bloodType: string;
+  emergency: EmergencyContact;
+  healthConditions: HealthCondition[];
+  feedback: Feedback[];
+}
+
+const PATIENTS: Patient[] = [
+{
   id: 1,
   initials: 'MT',
-  name: 'M T Dinuka',
-  age: 32,
+  name: 'DT Dinuka',
+  age: '-',
   gender: 'Male',
-  address: '22/1 Galle Road, Kalutara South',
-  hospital: 'Hemas',
-  nextAppt: '12:00 PM',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
   bloodType: 'O+',
   emergency: {
     guardian: 'Thisara Perera',
@@ -19,10 +53,7 @@ const PATIENT = {
     contact2: '0785 238 219',
   },
   healthConditions: [
-    { name: 'Blood Sugar Level', value: '85 mg/dL',   dot: 'green',  icon: '🩸' },
-    { name: 'Cholesterol',       value: '200 mg/dL',  dot: 'blue',   icon: '💉' },
-    { name: 'Thyroid Disorders', value: '4.0 mIU/L',  dot: 'orange', icon: '🔬' },
-    { name: 'Blood Pressure',    value: '120/80 mmHg', dot: 'purple', icon: '❤️' },
+     { name: 'Blood Pressure',    value: '120/80 mmHg', dot: 'purple', icon: '❤️' },
   ],
   feedback: [
     {
@@ -30,14 +61,99 @@ const PATIENT = {
       text: "I've reviewed your case and prescribed the needed medicine. Please follow the instructions in the app.",
       time: 'Jan 19, 2026 · 12:30 PM',
       color: 'blue',
-    },
+    }
+  ]
+},
+{
+  id: 2,
+  initials: '--',
+  name: 'Unknown',
+  age: '-',
+  gender: 'Male',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
+  bloodType: '-',
+  emergency: {
+    guardian: 'Thisara Perera',
+    contact1: '0766 579 841',
+    contact2: '0785 238 219',
+  },
+  healthConditions: [
+        { name: 'Thyroid Disorders', value: '4.0 mIU/L',  dot: 'orange', icon: '🔬' },
+   
+  ],
+  feedback: [
     {
       id: 2,
       text: 'Your consultation is complete, and your medication has been updated. Follow the steps shown in the app.',
       time: 'Jan 15, 2026 · 10:00 AM',
       color: 'green',
-    },
+    }
   ]
+},
+{
+  id: 3,
+  initials: '--',
+  name: 'Unknown',
+  age: '-',
+  gender: 'Male',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
+  bloodType: '-',
+  emergency: {
+    guardian: 'Thisara Perera',
+    contact1: '0766 579 841',
+    contact2: '0785 238 219',
+  },
+  healthConditions: [
+        { name: 'Cholesterol',       value: '200 mg/dL',  dot: 'blue',   icon: '💉' },
+
+  ],
+  feedback: []
+},
+{
+  id: 4,
+  initials: '--',
+  name: 'Unknown',
+  age: '-',
+  gender: 'Male',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
+  bloodType: '-',
+  emergency: {
+    guardian: 'Thisara Perera',
+    contact1: '0766 579 841',
+    contact2: '0785 238 219',
+  },
+  healthConditions: [
+    { name: 'Blood Sugar Level', value: '85 mg/dL',   dot: 'green',  icon: '🩸' },
+  ],
+  feedback: []
+}
+ 
+];
+
+// ── Default sample patient (used if lookup fails) ─────────────
+const FALLBACK_PATIENT: Patient = {
+  id: 1,
+  initials: '--',
+  name: 'Mock Patient',
+  age: '10',
+  gender: 'Male',
+  address: 'N/A',
+  hospital: 'N/A',
+  nextAppt: '-',
+  bloodType: '-',
+  emergency: {
+    guardian: '-',
+    contact1: '-',
+    contact2: '-',
+  },
+  healthConditions: [],
+  feedback: []
 };
 
 // ── Sub-components ──────────────────────────────────────────
@@ -59,10 +175,14 @@ function SectionCard({ iconBg, icon, title, sub, children }) {
 // ── Main Component ──────────────────────────────────────────
 export default function PatientDetails() {
   const navigate = useNavigate();
-  const p = PATIENT;
+  const { id } = useParams();
+  const patientId = Number(id);
+
+  // find matching patient using the shared list
+  const p = PATIENTS.find(pt => pt.id === patientId) ||  FALLBACK_PATIENT;
   const genderClass = p.gender.toLowerCase();
 
-    const handleNavigateToPatientsDetails = () => {
+  const handleNavigateToPatientsDetails = () => {
     navigate('/doctor/dashboard/patients');
   };
 
