@@ -26,14 +26,14 @@ function App() {
                     <Route path="/doctor/register/step1" element={<DoctorRegisterStep1 />} />
                     <Route path="/doctor/register/step2" element={<DoctorRegisterStep2 />} />
                     <Route path="/doctor/register/step3" element={<DoctorRegisterStep3 />} />
+                    
+                    {/* Doctor Login */}
+                    <Route path="/doctor/login" element={<DoctorLogin />} />
 
                     {/* Doctor Dashboard Flow */}
                     <Route path="/doctor/dashboard" element={<DoctorInformation />} />
                     <Route path="/doctor/dashboard/appointments" element={<Appointment />} />
                     <Route path="/doctor/dashboard/patients" element={<PatientList />} />
-                    
-                    {/* Doctor Login */}
-                    <Route path="/doctor/login" element={<DoctorLogin />} />
                     
                     {/* Redirect to home for unknown routes */}
                     <Route path="*" element={<Navigate to="/" replace />} />
