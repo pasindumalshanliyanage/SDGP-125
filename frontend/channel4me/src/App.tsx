@@ -34,7 +34,8 @@ function App() {
                     <Route path="/doctor/dashboard" element={<DoctorInformation />} />
                     <Route path="/doctor/dashboard/appointments" element={<Appointment />} />
                     <Route path="/doctor/dashboard/patients" element={<PatientList />} />
-                    <Route path="/doctor/dashboard/patients/id" element={<PatientDetails />} />
+                    {/* dynamic segment for patient id */}
+                    <Route path="/doctor/dashboard/patients/:id" element={<PatientDetails />} />
                     
                     {/* Redirect to home for unknown routes */}
                     <Route path="*" element={<Navigate to="/" replace />} />
